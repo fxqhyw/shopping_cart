@@ -29,16 +29,14 @@ Gem::Specification.new do |s|
   s.add_dependency 'draper'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jquery-turbolinks'
-  s.add_dependency "rectify"
+  s.add_dependency 'rectify'
   s.add_dependency 'turbolinks', '~> 5'
 
   s.add_development_dependency "pg" 
-  s.add_development_dependency 'web-console', '>= 3.3.0'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'pry-rails'
   s.add_development_dependency 'pry-byebug'
-  s.add_development_dependency 'rails_refactor'
   s.add_development_dependency 'transactional_capybara'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'shoulda-matchers'
