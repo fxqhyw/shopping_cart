@@ -27,11 +27,9 @@ gem "rectify"
 gem 'turbolinks', '~> 5'
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
   gem 'rubocop'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'rails_refactor'
 end
 
 group :test do

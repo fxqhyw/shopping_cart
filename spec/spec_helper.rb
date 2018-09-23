@@ -4,8 +4,12 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_bot_rails'
+require 'database_cleaner'
+require 'shoulda/matchers/integrations/rspec'
 
 Rails.backtrace_cleaner.remove_silencers!
+
+DatabaseCleaner.strategy = :truncation
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
