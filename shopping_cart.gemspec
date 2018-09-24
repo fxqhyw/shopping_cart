@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rectify'
   s.add_dependency 'turbolinks', '~> 5'
 
-  s.add_development_dependency "pg" 
+  s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'transactional_capybara'
@@ -40,4 +40,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'rails-controller-testing'
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'ffaker'
 end

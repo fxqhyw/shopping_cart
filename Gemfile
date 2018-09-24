@@ -26,6 +26,11 @@ gem 'jquery-turbolinks'
 gem "rectify"
 gem 'turbolinks', '~> 5'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'ffaker'
+end
+
 group :development do
   gem 'rubocop'
   gem 'pry-rails'
