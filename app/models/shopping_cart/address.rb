@@ -1,8 +1,7 @@
 module ShoppingCart
   class Address < ApplicationRecord
     belongs_to :order, optional: true
-    belongs_to :user, optional: true
-  
+
     validates :first_name, :last_name, :address, :city,
               :zip, :country, :phone, presence: true
     validates :first_name, :last_name, :address, :city, :country, length: { maximum: 50 }

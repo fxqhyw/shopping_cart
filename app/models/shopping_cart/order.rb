@@ -1,9 +1,9 @@
 module ShoppingCart
   class Order < ApplicationRecord
-    include OrderSummary
+    include ShoppingCart::OrderSummary
     include AASM
 
-    belongs_to :user, optional: true
+    belongs_to :user, class_name: ShoppingCart.user_class.to_s, optional: true
     belongs_to :coupon, optional: true
     belongs_to :delivery, optional: true
     has_many :order_items, dependent: :destroy

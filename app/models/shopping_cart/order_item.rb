@@ -1,8 +1,8 @@
 module ShoppingCart
   class OrderItem < ApplicationRecord
-    include TotalPrice
+    include ShoppingCart::TotalPrice
 
-    belongs_to :product
+    belongs_to :product, class_name: ShoppingCart.product_class.to_s
     belongs_to :order
 
     validates :quantity, numericality: { greater_than: 0 }

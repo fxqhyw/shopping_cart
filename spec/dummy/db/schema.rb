@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180924112154) do
+ActiveRecord::Schema.define(version: 20180924114007) do
 
   create_table "shopping_cart_addresses", force: :cascade do |t|
     t.string "type"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20180924112154) do
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_shopping_cart_addresses_on_order_id"
     t.index ["user_id"], name: "index_shopping_cart_addresses_on_user_id"
+  end
+
+  create_table "shopping_cart_billing_addresses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shopping_cart_coupons", force: :cascade do |t|
@@ -76,6 +81,11 @@ ActiveRecord::Schema.define(version: 20180924112154) do
     t.index ["coupon_id"], name: "index_shopping_cart_orders_on_coupon_id"
     t.index ["delivery_id"], name: "index_shopping_cart_orders_on_delivery_id"
     t.index ["user_id"], name: "index_shopping_cart_orders_on_user_id"
+  end
+
+  create_table "shopping_cart_shipping_addresses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
