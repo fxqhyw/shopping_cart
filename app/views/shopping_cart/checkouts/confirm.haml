@@ -1,0 +1,70 @@
+%main.container.general-main-wrap
+  = render 'checkouts/progress'
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle= t('settings.shipping')
+      - if current_order.shipping_address
+        = render partial: 'shared/shipping_address_info', locals: { order: current_order }
+      - else
+        = render partial: 'shared/billing_address_info', locals: { order: current_order }
+    .col-sm-3
+      %h3.general-subtitle= t('settings.billing')
+      = render partial: 'shared/billing_address_info', locals: { order: current_order }
+    = render partial: 'shared/shipments_info', locals: { order: current_order }
+    = render partial: 'shared/payment_info', locals: { order: current_order }
+  .visible-xs
+    .general-cart-item.divider-lg
+      - current_order.order_items.each do |item|
+        .general-img-wrap-table
+          = render partial: 'shared/icon_book_image', locals: { book: item.book }
+        = link_to book_path(item.book), class: 'text-as-link' do
+          %p.title= item.book.title
+        %P.in-grey-600.fw-300= truncate(item.book.description, length: 75)
+        %table.table
+          %tr
+            %td
+              %span.in-grey-600= t('cart.price')
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.book.price)
+          %tr
+            %td.vertical-middle
+              %span.in-grey-600= t('cart.quantity')
+            %td
+              %span= item.quantity
+          %tr
+            %td
+              %span.in-grey-600= t('cart.subtotal')
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.total_price)
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('checkout.book')
+          %th.col-method
+          %th
+            %span.in-grey-600= t('cart.price')
+          %th
+            %span.in-grey-600= t('cart.quantity')
+          %th
+            %span.in-grey-600= t('checkout.total')
+      %tbody
+        - current_order.order_items.each do |item|
+          %tr
+            %td
+              .general-img-wrap-table
+                = render partial: 'shared/icon_book_image', locals: { book: item.book }
+            %td
+              = link_to book_path(item.book), class: 'text-as-link' do
+                %p.title= item.book.title
+              %p.in-grey-600.fw-300= truncate(item.book.description, length: 175)
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.book.price)
+            %td
+              %span.ml-30= item.quantity
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.total_price)
+  = render partial: 'shared/order_summary', locals: { order: current_order }
+  .text-center
+    = link_to t('checkout.place_order'), wizard_path, method: :put, class: 'btn btn-default mb-20'

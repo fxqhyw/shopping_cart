@@ -1,0 +1,17 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('cart.cart')
+  = render 'mobile_order_items'
+  = render 'order_items'
+  - if current_order&.items_count
+    .general-order-wrap
+      .row
+        .col-sm-4
+          = form_with url: cart_path, method: :put do |f|
+            .input-group.general-input-group
+              %label.input-label= t('cart.coupon')
+              = f.text_field :coupon_code, placeholder: t('cart.coupon'), class: 'form-control mb-30'
+            %div
+              = f.submit t('cart.apply_coupon'), class: "btn btn-primary mb-15 res-block"
+        = render 'order_summary'
+        = button_to t('cart.checkout'), checkouts_path, method: :get, class: "btn btn-default mb-20 visible-xs-inline-block"
+    = button_to t('cart.checkout'), checkouts_path, method: :get, class: "btn btn-default mb-20 hidden-xs center-block"

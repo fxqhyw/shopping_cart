@@ -1,0 +1,8 @@
+.col-sm-3
+  %h3.general-subtitle= t('checkout.shipments')
+  %p.general-address
+  = order.delivery.name
+  - if order.in_progress?
+    = link_to t('checkout.edit'), wizard_path(:delivery, edit: true), class: "general-edit"
+  %br
+  = order.delivery.duration

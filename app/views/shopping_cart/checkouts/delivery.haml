@@ -1,0 +1,11 @@
+%main.container.general-main-wrap
+  = render 'progress'
+  %h3.general-subtitle= t('delivery.delivery_method')
+  = form_tag(wizard_path, method: :put) do
+    .visible-xs
+      = render 'mobile_delivery_list'
+    .hidden-xs.mb-res-50
+      = render 'delivery_list'
+    = render partial: 'shared/order_summary', locals: { order: current_order }
+    .text-center
+      = submit_tag t('checkout.save_and_continue'), class: 'btn btn-default mb-20'

@@ -1,0 +1,11 @@
+- if hide_address_fields?(tag)
+  .col-md-5.col-md-offset-1.mb-60{id: tag, hidden: true }
+    .visible-xs.visible-sm
+      %h3.general-subtitle= type
+    = render partial: "address_form_fields", locals: { tag: tag }
+- else
+  .col-md-5.col-md-offset-1.mb-60{id: tag }
+    .visible-xs.visible-sm
+      %h3.general-subtitle= type
+    = render partial: "address_form_fields", locals: { tag: tag }
+

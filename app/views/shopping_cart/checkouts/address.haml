@@ -1,0 +1,27 @@
+%main.container
+  = render 'progress'
+  = form_tag(wizard_path, method: :put) do
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle= t('settings.billing')
+          %p.general-info-text= t('checkout.fields_required')
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle= t('settings.shipping')
+    .row
+      = render partial: "address_form", locals: { type: "Billing Address", tag: "billing" }
+      = render partial: "address_form", locals: { type: "Shipping Address", tag: "shipping" }
+    .checkbox#use_billing_checkbox
+      %label.font-weight-light.pl-0
+        - if current_page?('/checkouts/address?edit=true') && !current_order.shipping_address
+          = check_box :use_billing, true, id: 'use_billing', class: "checkbox-input", hidden: 'true', checked: true
+          %span.checkbox-icon
+            %i.fa.fa-check
+          %span.checkbox-text= t('settings.use_billing')
+        - else
+          = check_box :use_billing, true, id: 'use_billing', class: "checkbox-input", hidden: 'true'
+          %span.checkbox-icon
+            %i.fa.fa-check
+          %span.checkbox-text= t('settings.use_billing')
+    = render partial: 'shared/order_summary', locals: { order: current_order }
+    = submit_tag t('checkout.save_and_continue'), method: :put, class: "btn btn-default center-block mb-20"

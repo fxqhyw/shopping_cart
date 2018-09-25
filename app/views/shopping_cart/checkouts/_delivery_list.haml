@@ -1,0 +1,22 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th.col-method
+        %span.in-grey-600.ml-40= t('delivery.method')
+      %th
+        %span.in-grey-600= t('delivery.days')
+      %th
+        %span.in-grey-600= t('delivery.price')
+  %tbody
+    - Delivery.all.each do |delivery|
+      %tr
+        %td
+          .form-group.radio.mt-0.mb-0
+            %label.font-16.font-weight-light.pl-0
+              = radio_button_tag 'delivery_id', delivery.id, checked_delivery?(delivery.id), hidden: "true", class: "radio-input"
+              %span.radio-icon
+              %span.radio-text= delivery.name
+        %td
+          %span= delivery.duration
+        %td
+          %span.font-16.in-gold-500= price_to_euro(delivery.price)

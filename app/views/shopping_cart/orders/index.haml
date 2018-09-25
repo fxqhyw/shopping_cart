@@ -1,0 +1,6 @@
+%main.container.general-main-wrap
+  %h1.mt-0.mb-25= t('orders.my_orders')
+  %p.lead.small.mb-10.visible-xs= t('orders.sort_by')
+  =render 'filter'
+  = render 'mobile_orders'
+  = render 'orders'

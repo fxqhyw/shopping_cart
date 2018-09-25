@@ -1,0 +1,35 @@
+.visible-xs#mobile_item_table
+  - if current_order&.items_count
+    - current_order.order_items.created.each do |item|
+      .general-cart-item.divider-lg-bottom
+        = link_to order_item_path(item), method: :delete, class: 'close general-cart-close', remote: true do
+          %span{'aria-hidden': "true"} &times;
+        .general-img-wrap-table
+          = render partial: 'shared/icon_book_image', locals: { book: item.book }
+        = link_to book_path(item.book), class: 'text-as-link' do
+          %p.title= item.book.title
+        %table.table
+          %tr
+            %td
+              %span.in-grey-600= t('cart.price')
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.book.price)
+          %tr
+            %td.vertical-middle
+              %span.in-grey-600= t('cart.quantity')
+            %td
+              .input-group
+                = link_to order_item_path(id: item.id, quantity: item.quantity - 1), class: 'input-link', id: "item_#{item.book_id}_minus", method: :put, remote: true do
+                  %i.fa.fa-minus.line-heaght-40
+                %input.form-control.quantity-input{type: "text", value: item.quantity}
+                = link_to order_item_path(id: item.id, quantity: item.quantity + 1), class: 'input-link', id: "item_#{item.book_id}_plus", method: :put, remote: true do
+                  %i.fa.fa-plus.line-heaght-40
+          %tr
+            %td
+              %span.in-grey-600= t('cart.subtotal')
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.total_price)
+  - else
+    .text-center
+      %h3= t('notice.empty_cart')
+      = link_to t('button.back_to_store'), catalog_path, class: 'btn btn-default mb-20'

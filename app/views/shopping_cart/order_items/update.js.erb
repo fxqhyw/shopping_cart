@@ -1,0 +1,5 @@
+$('#item_table').replaceWith("<%= j(render template: 'carts/_order_items') %>")
+$('#mobile_item_table').replaceWith("<%= j(render template: 'carts/_mobile_order_items') %>")
+$('#summary_table').replaceWith("<%= j(render template: 'carts/_order_summary') %>")
+$('#cart_quantity').replaceWith("<%= j(render template: 'layouts/_cart_quantity') %>")
+$('#mobile_cart_quantity').replaceWith("<%= j(render template: 'layouts/_mobile_cart_quantity') %>")

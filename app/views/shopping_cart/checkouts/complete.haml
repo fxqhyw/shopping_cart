@@ -1,0 +1,93 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('cart.checkout')
+  %ul.steps.list-inline
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs= t('settings.address')
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs= t('checkout.delivery')
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs= t('checkout.payment')
+    %li.step.done
+      %span.step-number
+        %i.fa.fa-check.step-icon
+      %span.step-text.hidden-xs= t('checkout.confirm')
+    %li.step.active
+      %span.step-number 5
+      %span.step-text.hidden-xs= t('checkout.complete')
+  .text-center.mb-40
+    %h3.general-subtitle= t('checkout.thanks')
+    %p.fw-300= t('checkout.sent_message') + @placed_order.user.email
+  .row.mb-20
+    .col-sm-6
+      .visible-xs
+        %p.general-order-number.mb-0= t('checkout.order') + @placed_order.number
+        %p.general-address.mb-30= @placed_order.created_date
+      - if @placed_order.shipping_address
+        = render partial: 'shared/shipping_address_info', locals: { order: @placed_order }
+      - else
+        = render partial: 'shared/billing_address_info', locals: { order: @placed_order }
+    .col-sm-6.hidden-xs.text-right
+      %p.general-order-number.mb-0= t('checkout.order') + @placed_order.number
+      %p.general-address.mb-30= @placed_order.created_date
+  .visible-xs
+    .general-cart-item.divider-lg
+      - @placed_order.order_items.each do |item|
+        .general-img-wrap-table
+          = render partial: 'shared/icon_book_image', locals: { book: item.book }
+        = link_to book_path(item.book), class: 'text-as-link' do
+          %p.title= item.book.title
+        %P.in-grey-600.fw-300= truncate(item.book.description, length: 75)
+        %table.table
+          %tr
+            %td
+              %span.in-grey-600= t('cart.price')
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.book.price)
+          %tr
+            %td.vertical-middle
+              %span.in-grey-600= t('cart.quantity')
+            %td
+              %span= item.quantity
+          %tr
+            %td
+              %span.in-grey-600= t('cart.subtotal')
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.total_price)
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('checkout.book')
+          %th.col-method
+          %th
+            %span.in-grey-600= t('cart.price')
+          %th
+            %span.in-grey-600= t('cart.quantity')
+          %th
+            %span.in-grey-600= t('checkout.total')
+      %tbody
+        - @placed_order.order_items.each do |item|
+          %tr
+            %td
+              .general-img-wrap-table
+                = render partial: 'shared/icon_book_image', locals: { book: item.book }
+            %td
+              = link_to book_path(item.book), class: 'text-as-link' do
+                %p.title= item.book.title
+              %p.in-grey-600.fw-300= truncate(item.book.description, length: 175)
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.book.price)
+            %td
+              %span.ml-30= item.quantity
+            %td
+              %span.font-16.in-gold-500= price_to_euro(item.total_price)
+  = render partial: 'shared/order_summary', locals: { order: current_order }
+  .text-center
+    = link_to t('button.back_to_store'), catalog_path, class: 'btn btn-default mb-20'

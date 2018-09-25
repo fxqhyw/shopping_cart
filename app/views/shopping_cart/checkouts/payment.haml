@@ -1,0 +1,28 @@
+%main.container.mb-res-50
+  = render 'progress'
+  %h3.general-subtitle= t('payment.credit_card')
+  = form_tag wizard_path, method: :put, class: 'max-600 mb-80', id: 'payment_form' do |f|
+    = hidden_field_tag "credit_card[order_id", current_order.id
+    .form-group{class: "#{'has-error' if card_error?(:number)}"}
+      %label.control-label.input-label= t('payment.card_number')
+      = text_field_tag "credit_card[number]", secret_card_number(card_saved_value(:number)), placeholder: t('payment.card_number'), class: "form-control", id: 'number', required: true, pattern: "[0-9]{13,18}", title: t('payment.number_hint')
+      %span.help-block= card_error_message(:number)
+    .row
+      .col-sm-6
+        .form-group{class: "#{'has-error' if card_error?(:name)}"}
+          %label.control-label.input-label= t('payment.name_on_card')
+          = text_field_tag "credit_card[name]", card_saved_value(:name), placeholder: t('payment.name_on_card'), class: "form-control", id: 'name', required: true
+          %span.help-block= card_error_message(:name)
+      .col-sm-3
+        .form-group{class: "#{'has-error' if card_error?(:expiration_date)}"}
+          %label.control-label.input-label= t('payment.mm_yy')
+          = text_field_tag "credit_card[expiration_date]", card_saved_value(:expiration_date), placeholder: t('payment.mm_yy'), class: "form-control", id: 'exp-date', required: true
+          %span.help-block= card_error_message(:expiration_date)
+      .col-sm-3
+        .form-group.relative
+          %label.control-label.input-label= t('payment.cvv')
+          = text_field_tag "cvv", "", placeholder: t('payment.cvv'), class: "form-control", id: 'cvv', pattern: "[0-9]{3,4}", required: true
+          %i.fa.fa-question-circle.general-form-help{'data-toggle': 'tooltip', 'data-placement': :top, title: t('payment.hint')}
+    = render partial: 'shared/order_summary', locals: { order: current_order }
+    .text-center
+      = submit_tag t('checkout.save_and_continue'), class: 'btn btn-default mb-80'
