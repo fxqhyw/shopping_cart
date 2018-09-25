@@ -20,7 +20,7 @@ module ShoppingCart
     end
 
     def find_order_item
-      @order_item = current_order.order_items.find_by(book_id: @params[:book_id])
+      @order_item = current_order.order_items.find_by(product_id: @params[:product_id])
     end
 
     def update_order_item_quantity

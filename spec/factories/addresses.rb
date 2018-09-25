@@ -8,7 +8,7 @@ FactoryBot.define do
     country { FFaker::Address.country }
     phone { '+1234567890' }
     type { 'BillingAddress' }
-    user
     order { nil }
+    user
   end
 end

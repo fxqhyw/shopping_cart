@@ -19,7 +19,7 @@ module ShoppingCart
     private
 
     def permited_params
-      params.permit(:quantity, :book_id)
+      params.permit(:quantity, :product_id)
     end
 
     def order_item

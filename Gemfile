@@ -23,7 +23,8 @@ gem 'wicked'
 gem 'draper'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
-gem "rectify"
+gem 'rectify'
+gem 'cancancan'
 gem 'turbolinks', '~> 5'
 
 group :development, :test do

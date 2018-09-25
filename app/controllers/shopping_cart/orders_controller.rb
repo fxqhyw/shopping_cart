@@ -6,5 +6,7 @@ module ShoppingCart
     def index
       @orders = OrdersFilter.new(orders: current_user.orders.placed, params: params).call.decorate
     end
+
+    def show; end
   end
 end
