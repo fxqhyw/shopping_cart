@@ -1,5 +1,7 @@
 module ShoppingCart
   class OrdersController < ApplicationController
+    include ShoppingCart::CurrentSession
+
     before_action :authenticate_user!
     load_and_authorize_resource
 

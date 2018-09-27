@@ -1,5 +1,7 @@
 module ShoppingCart
   class CartsController < ApplicationController
+    include ShoppingCart::CurrentSession
+
     def show; end
 
     def update

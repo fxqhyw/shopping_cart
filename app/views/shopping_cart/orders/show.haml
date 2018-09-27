@@ -4,28 +4,28 @@
     .col-sm-3
       %h3.general-subtitle= t('settings.shipping')
       - if @order.shipping_address
-        = render partial: 'shared/shipping_address_info', locals: { order: @order }
+        = render partial: 'shopping_cart/shared/shipping_address_info', locals: { order: @order }
       - else
-        = render partial: 'shared/billing_address_info', locals: { order: @order }
+        = render partial: 'shopping_cart/shared/billing_address_info', locals: { order: @order }
     .col-sm-3
       %h3.general-subtitle= t('settings.billing')
-      = render partial: 'shared/billing_address_info', locals: { order: @order }
-    = render partial: 'shared/shipments_info', locals: { order: @order }
-    = render partial: 'shared/payment_info', locals: { order: @order }
+      = render partial: 'shopping_cart/shared/billing_address_info', locals: { order: @order }
+    = render partial: 'shopping_cart/shared/shipments_info', locals: { order: @order }
+    = render partial: 'shopping_cart/shared/payment_info', locals: { order: @order }
   .visible-xs
     .general-cart-item.divider-lg
       - @order.order_items.each do |item|
         .general-img-wrap-table
-          = render partial: 'shared/icon_book_image', locals: { book: item.book }
-        = link_to book_path(item.book), class: 'text-as-link' do
-          %p.title= item.book.title
-        %P.in-grey-600.fw-300= truncate(item.book.description, length: 75)
+          = render partial: 'shopping_cart/shared/icon_book_image', locals: { book: item.product }
+        = link_to main_app.product_path(item.product), class: 'text-as-link' do
+          %p.title= item.product.title
+        %P.in-grey-600.fw-300= truncate(item.product.description, length: 75)
         %table.table
           %tr
             %td
               %span.in-grey-600= t('cart.price')
             %td
-              %span.font-16.in-gold-500= price_to_euro(item.book.price)
+              %span.font-16.in-gold-500= price_to_euro(item.product.price)
           %tr
             %td.vertical-middle
               %span.in-grey-600= t('cart.quantity')
@@ -54,15 +54,15 @@
           %tr
             %td
               .general-img-wrap-table
-                = render partial: 'shared/icon_book_image', locals: { book: item.book }
+                = render partial: 'shopping_cart/shared/icon_book_image', locals: { book: item.product }
             %td
-              = link_to book_path(item.book), class: 'text-as-link' do
-                %p.title= item.book.title
-              %p.in-grey-600.fw-300= truncate(item.book.description, length: 175)
+              = link_to main_app.product_path(item.product), class: 'text-as-link' do
+                %p.title= item.product.title
+              %p.in-grey-600.fw-300= truncate(item.product.description, length: 175)
             %td
-              %span.font-16.in-gold-500= price_to_euro(item.book.price)
+              %span.font-16.in-gold-500= price_to_euro(item.product.price)
             %td
               %span.ml-30= item.quantity
             %td
               %span.font-16.in-gold-500= price_to_euro(item.total_price)
-  = render partial: 'shared/order_summary', locals: { order: @order }
+  = render partial: 'shopping_cart/shared/order_summary', locals: { order: @order }

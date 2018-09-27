@@ -7,7 +7,7 @@ FactoryBot.define do
     zip { '7777' }
     country { FFaker::Address.country }
     phone { '+1234567890' }
-    type { 'BillingAddress' }
+    type { 'ShoppingCart::BillingAddress' }
     order { nil }
     user
   end

@@ -12,6 +12,8 @@ require 'factory_bot_rails'
 require 'capybara/rspec'
 require 'capybara/webkit/matchers'
 require 'transactional_capybara/rspec'
+require_relative 'support/wait_for_ajax'
+
 
 FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 FactoryBot.factories.clear
@@ -37,12 +39,9 @@ RSpec.configure do |config|
   config.include Shoulda::Matchers::ActiveRecord, type: :model
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Capybara::Webkit::RspecMatchers, type: :feature
-
-  [:controller, :view, :request].each do |type|
-    config.include ::Rails::Controller::Testing::TestProcess, type: type
-    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
-    config.include ::Rails::Controller::Testing::Integration, type: type
-  end
+  config.include Warden::Test::Helpers
+  config.include WaitForAjax, type: :feature
+  config.include ShowMeTheCookies, type: :feature
 end
 
 Shoulda::Matchers.configure do |config|

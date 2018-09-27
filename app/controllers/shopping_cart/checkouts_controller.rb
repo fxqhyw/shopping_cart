@@ -1,5 +1,6 @@
 module ShoppingCart
   class CheckoutsController < ApplicationController
+    include ShoppingCart::CurrentSession
     include Wicked::Wizard
     include Rectify::ControllerHelpers
 

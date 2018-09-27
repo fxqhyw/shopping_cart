@@ -29,6 +29,7 @@ gem 'turbolinks', '~> 5'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'puma'
   gem 'ffaker'
 end
 
@@ -46,4 +47,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'show_me_the_cookies'
 end

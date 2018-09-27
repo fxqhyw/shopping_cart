@@ -4,19 +4,19 @@
     .col-sm-3
       %h3.general-subtitle= t('settings.shipping')
       - if current_order.shipping_address
-        = render partial: 'shared/shipping_address_info', locals: { order: current_order }
+        = render partial: 'shopping_cart/shared/shipping_address_info', locals: { order: current_order }
       - else
-        = render partial: 'shared/billing_address_info', locals: { order: current_order }
+        = render partial: 'shopping_cart/shared/billing_address_info', locals: { order: current_order }
     .col-sm-3
       %h3.general-subtitle= t('settings.billing')
-      = render partial: 'shared/billing_address_info', locals: { order: current_order }
-    = render partial: 'shared/shipments_info', locals: { order: current_order }
-    = render partial: 'shared/payment_info', locals: { order: current_order }
+      = render partial: 'shopping_cart/shared/billing_address_info', locals: { order: current_order }
+    = render partial: 'shopping_cart/shared/shipments_info', locals: { order: current_order }
+    = render partial: 'shopping_cart/shared/payment_info', locals: { order: current_order }
   .visible-xs
     .general-cart-item.divider-lg
       - current_order.order_items.each do |item|
         .general-img-wrap-table
-          = render partial: 'shared/icon_book_image', locals: { book: item.book }
+          = render partial: 'shopping_cart/shared/icon_book_image', locals: { book: item.book }
         = link_to book_path(item.book), class: 'text-as-link' do
           %p.title= item.book.title
         %P.in-grey-600.fw-300= truncate(item.book.description, length: 75)
@@ -54,7 +54,7 @@
           %tr
             %td
               .general-img-wrap-table
-                = render partial: 'shared/icon_book_image', locals: { book: item.book }
+                = render partial: 'shopping_cart/shared/icon_book_image', locals: { book: item.book }
             %td
               = link_to book_path(item.book), class: 'text-as-link' do
                 %p.title= item.book.title
@@ -65,6 +65,6 @@
               %span.ml-30= item.quantity
             %td
               %span.font-16.in-gold-500= price_to_euro(item.total_price)
-  = render partial: 'shared/order_summary', locals: { order: current_order }
+  = render partial: 'shopping_cart/shared/order_summary', locals: { order: current_order }
   .text-center
     = link_to t('checkout.place_order'), wizard_path, method: :put, class: 'btn btn-default mb-20'
