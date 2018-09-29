@@ -15,6 +15,7 @@ gemspec
 gem 'haml-rails'
 gem 'sass-rails'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'aasm'

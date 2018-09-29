@@ -8,7 +8,7 @@
       %th
         %span.in-grey-600= t('delivery.price')
   %tbody
-    - Delivery.all.each do |delivery|
+    - ShoppingCart::Delivery.all.each do |delivery|
       %tr
         %td
           .form-group.radio.mt-0.mb-0

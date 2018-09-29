@@ -23,5 +23,5 @@
           %span.checkbox-icon
             %i.fa.fa-check
           %span.checkbox-text= t('settings.use_billing')
-    = render partial: 'shared/order_summary', locals: { order: current_order }
+    = render partial: 'shopping_cart/shared/order_summary', locals: { order: current_order }
     = submit_tag t('checkout.save_and_continue'), method: :put, class: "btn btn-default center-block mb-20"

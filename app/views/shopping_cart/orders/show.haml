@@ -17,7 +17,7 @@
       - @order.order_items.each do |item|
         .general-img-wrap-table
           = render partial: 'shopping_cart/shared/icon_book_image', locals: { book: item.product }
-        = link_to main_app.product_path(item.product), class: 'text-as-link' do
+        = link_to main_app.book_path(item.product), class: 'text-as-link' do
           %p.title= item.product.title
         %P.in-grey-600.fw-300= truncate(item.product.description, length: 75)
         %table.table
@@ -56,7 +56,7 @@
               .general-img-wrap-table
                 = render partial: 'shopping_cart/shared/icon_book_image', locals: { book: item.product }
             %td
-              = link_to main_app.product_path(item.product), class: 'text-as-link' do
+              = link_to main_app.book_path(item.product), class: 'text-as-link' do
                 %p.title= item.product.title
               %p.in-grey-600.fw-300= truncate(item.product.description, length: 175)
             %td

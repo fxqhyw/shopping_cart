@@ -18,15 +18,15 @@
             .general-img-wrap-table
               = render partial: 'shopping_cart/shared/icon_book_image', locals: { book: item.product }
           %td
-            =link_to main_app.product_path(item.product), class: 'text-as-link' do
+            =link_to main_app.book_path(item.product), class: 'text-as-link' do
               %p.title= item.product.title
           %td
             %span.font-16.in-gold-500= price_to_euro(item.product.price)
           %td
-            = link_to order_item_path(id: item.id, quantity: item.quantity - 1), style: "display: inline;", id: "minus_#{item.product_id}", method: :put, remote: true do
+            = link_to shopping_cart.order_item_path(id: item.id, quantity: item.quantity - 1), style: "display: inline;", id: "minus_#{item.product_id}", method: :put, remote: true do
               %i.fa.fa-minus.line-height-40
             .form-control.quantity-input{type: "text", id: "quantity_input_#{item.product_id}", style: "display: inline;"}= item.quantity
-            = link_to order_item_path(id: item.id, quantity: item.quantity + 1), style: "display: inline;", id: "plus_#{item.product_id}", method: :put, remote: true do
+            = link_to shopping_cart.order_item_path(id: item.id, quantity: item.quantity + 1), style: "display: inline;", id: "plus_#{item.product_id}", method: :put, remote: true do
               %i.fa.fa-plus.line-height-40
           %td
             %span.font-16.in-gold-500= price_to_euro(item.total_price)

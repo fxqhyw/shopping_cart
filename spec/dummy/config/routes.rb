@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get '/catalog', to: 'products#index'
-  devise_for :users
-  resources :products
-  get '/catalog', to: 'products#index', as: :user_facebook_omniauth_authorize
-  get '/catalog', to: 'products#index', as: :new_user_password
+  devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
+  resources :books
+  root 'books#index'
+  get '/catalog', to: 'books#index'
+  get '/catalog', to: 'books#index', as: :privacy
+  get '/catalog', to: 'books#index', as: :user_facebook_omniauth_authorize
 
   mount ShoppingCart::Engine => '/'
 end

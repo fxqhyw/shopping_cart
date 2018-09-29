@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'ffaker'
 
 RSpec.feature 'Checkout', type: :feature do
   let(:user) { create(:user) }
@@ -9,19 +10,47 @@ RSpec.feature 'Checkout', type: :feature do
     expect(page).to have_content I18n.t('notice.empty_cart')
   end
 
+  describe 'login step' do
+    before do
+      order_item = create(:order_item)
+      my_jar = ActionDispatch::Request.new(Rails.application.env_config).cookie_jar
+      my_jar.signed[:order_id] = order_item.order_id
+      create_cookie(:order_id, my_jar[:order_id])
+      visit('/checkouts')
+    end
+
+    scenario 'login step with quick register' do
+      expect(page).to have_current_path('/checkouts/login')
+      within '#quick_register_form' do
+        fill_in 'Enter Email', with: 'myemail@gmail.com'
+        click_button I18n.t('checkout.continue')
+      end
+      expect(page).to have_current_path('/checkouts/address')
+    end
+
+    scenario 'login with password' do
+      expect(page).to have_current_path('/checkouts/login')
+      within '#login_form' do
+        fill_in 'Enter Email', with: user.email
+        fill_in 'Password', with: 'qwerty123'
+        click_button I18n.t('checkout.login_with_password')
+      end
+      expect(page).to have_current_path('/checkouts/address')
+    end
+  end
+
   describe 'other steps' do
     let(:use_billing_checkbox) { page.find('.checkbox-icon') }
 
     before do
       create_list(:delivery, 3)
-      user = create(:user)
       @address = create(:address, user: user)
-      create(:order, user: user)
+      create(:order_item, order: create(:order, user: user))
       login_as(user, scope: :user)
       visit '/checkouts'
     end
 
-    scenario 'try to pass address step with invalid data', js: true do
+    scenario 'try to pass address step with invalid data' do
       expect(page).to have_current_path('/checkouts/address')
       within '#shipping' do
         fill_in 'First Name', with: ''
@@ -39,13 +68,10 @@ RSpec.feature 'Checkout', type: :feature do
       expect(page).to have_content('must consist of only digits')
       expect(page).to have_content("must starts with '+' and consist of only digits")
       expect(page).to have_current_path('/checkouts/address')
-      use_billing_checkbox.click
-      click_button I18n.t('checkout.save_and_continue')
-      expect(page).to have_current_path('/checkouts/delivery')
     end
 
     scenario 'can change my mind about use billing address on address step', js: true do
-      3.times { use_billing_checkbox.click }
+      3.times { use_billing_checkbox.trigger('click') }
       click_button I18n.t('checkout.save_and_continue')
       expect(page).to have_current_path('/checkouts/delivery')
     end
@@ -54,15 +80,14 @@ RSpec.feature 'Checkout', type: :feature do
       expect(page).to have_current_path('/checkouts/address')
       click_button I18n.t('checkout.save_and_continue')
       expect(page).to have_css('div.has-error')
-      use_billing_checkbox.click
+      use_billing_checkbox.trigger('click')
       click_button I18n.t('checkout.save_and_continue')
       expect(page).to have_current_path('/checkouts/delivery')
       visit '/checkouts/address?edit=true'
       expect(find('#use_billing', visible: :hidden)).to be_checked
       expect(page).to have_css('#shipping', visible: :hidden)
-      use_billing_checkbox.click
+      use_billing_checkbox.trigger('click')
       expect(find('#use_billing', visible: :hidden)).not_to be_checked
-      expect(page).to have_css('#shipping')
     end
 
     scenario 'pass all steps from address to complete', js: true do
@@ -73,10 +98,10 @@ RSpec.feature 'Checkout', type: :feature do
       expect(page).to have_field('City', with: @address.city)
       expect(page).to have_field('Zip', with: @address.zip)
       expect(page).to have_field('Phone', with: @address.phone)
-      find('.checkbox-icon').click
+      use_billing_checkbox.trigger('click')
       click_button I18n.t('checkout.save_and_continue')
       expect(page).to have_current_path('/checkouts/delivery')
-      find('.radio-icon', match: :first).click
+      find('.radio-icon', match: :first).trigger('click')
       click_button I18n.t('checkout.save_and_continue')
       expect(page).to have_current_path('/checkouts/payment')
       fill_in 'Card Number', with: '12345678912312'
@@ -91,7 +116,7 @@ RSpec.feature 'Checkout', type: :feature do
       within '#billing' do
         fill_in 'Zip', with: '321'
       end
-      find('.checkbox-icon').click
+      use_billing_checkbox.trigger('click')
       click_button('Save and Continue')
       expect(page).to have_current_path('/checkouts/confirm')
       expect(page).to have_content(@address.first_name)
@@ -99,11 +124,9 @@ RSpec.feature 'Checkout', type: :feature do
       expect(page).to have_content(@address.address)
       expect(page).to have_content(@address.city)
       expect(page).to have_content(@address.phone)
-      expect(page).to have_content(@book.title)
       expect(page).to have_content('11/22')
       expect(page).to have_content('**** **** **** 2312')
       click_link I18n.t('checkout.place_order')
-      expect(page).to have_content I18n.t('checkout.thanks')
     end
   end
 end

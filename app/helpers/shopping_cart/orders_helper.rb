@@ -6,8 +6,12 @@ module ShoppingCart
       I18n.t('button.all')
     end
 
-    def price_to_euro(price)
-      "€#{price}"
+    def client_name(address)
+      address.first_name + ' ' + address.last_name if address
+    end
+
+    def secret_card_number(number)
+      '**** **** **** ' + number if number
     end
   end
 end

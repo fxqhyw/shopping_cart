@@ -3,18 +3,15 @@ PATH
   specs:
     shopping_cart (0.1.0)
       aasm
-      bootstrap-sass
       cancancan
       country_select
       devise
       draper
-      font-awesome-rails
       haml-rails
       jquery-rails
       jquery-turbolinks
       rails (~> 5.2.1)
       rectify
-      sass-rails
       turbolinks (~> 5)
       wicked
 
@@ -133,6 +130,8 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
+    faraday (0.12.2)
+      multipart-post (>= 1.2, < 3)
     ffaker (2.10.0)
     ffi (1.9.25)
     font-awesome-rails (4.7.0.4)
@@ -148,6 +147,7 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    hashie (3.5.7)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -166,6 +166,7 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (2.1.0)
+    jwt (1.5.6)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -180,9 +181,26 @@ GEM
     minitest (5.11.3)
     money (6.12.0)
       i18n (>= 0.6.4, < 1.1)
+    multi_json (1.13.1)
+    multi_xml (0.6.0)
+    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    oauth2 (1.4.0)
+      faraday (>= 0.8, < 0.13)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (1.8.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-facebook (5.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth2 (1.5.0)
+      oauth2 (~> 1.1)
+      omniauth (~> 1.2)
     orm_adapter (0.5.0)
     parallel (1.12.1)
     parser (2.5.1.2)
@@ -348,6 +366,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   jquery-turbolinks
+  omniauth-facebook
   pry-byebug
   pry-rails
   puma
