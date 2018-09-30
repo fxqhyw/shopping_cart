@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    loker-shopping-cart (0.1.2)
+    shopping_cart (0.1.3)
       aasm
       cancancan
       country_select
@@ -310,10 +310,10 @@ DEPENDENCIES
   database_cleaner
   factory_bot_rails
   ffaker
-  loker-shopping-cart!
   rails-controller-testing
   rspec-rails
   rubocop
+  shopping_cart!
   shoulda-matchers
   show_me_the_cookies
   sqlite3

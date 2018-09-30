@@ -5,7 +5,7 @@ require "shopping_cart/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "loker-shopping-cart"
+  s.name        = "shopping_cart"
   s.version     = ShoppingCart::VERSION
   s.authors     = ["therealloker"]
   s.email       = ["therealloker@gmail.com"]
