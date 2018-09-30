@@ -1,0 +1,23 @@
+.general-text-align.mb-60
+  %p.in-gold-500.font-18= t('cart.summary')
+  %table.general-summary-table
+    %tr
+      %td
+        %p.font-16= t('checkout.item_total')
+      %td
+        %p.font-16= price_to_euro(order.subtotal)
+      %tr
+        %td
+          %p.font-16= t('cart.coupon')
+        %td
+          %p.font-16= price_to_euro(order.discount)
+      %tr
+        %td
+          %p.font-16= t('checkout.delivery')
+        %td
+          %p.font-16= price_to_euro(order.delivery_price)
+      %tr
+        %td
+          %strong.font-18= t('cart.total')
+        %td
+          %strong.font-18= price_to_euro(order.order_total)

@@ -1,0 +1,206 @@
+en:
+  button:
+    home: 'Home'
+    shop: 'Shop'
+    orders: 'Orders'
+    settings: 'Settings'
+    log_out: 'Log out'
+    log_in: 'Log in'
+    my_account: 'My account'
+    sign_up: 'Sign up'
+    back_to_store: 'Back to Store'
+    back_to_orders: 'Back to Orders'
+    forgot_password: 'Forgot password?'
+    resend_passwd_instruction: 'Email Instructions'
+    type_new_passwd: 'Type a new Password'
+    confirm_passwd: 'Confirm Password'
+    change: 'Change'
+    buy_now: 'Buy Now'
+    back_to_results: 'Back to results'
+    add_to_cart: 'Add to Cart'
+    read_more: 'Read More'
+    view_more: 'View More'
+    all: 'All'
+    newest: 'Newest first'
+    popular: 'Popular first'
+    low_to_high_price: 'Price: Low to high'
+    high_to_low_price: 'Price: High to low'
+    title_a_z: 'Title A - Z'
+    title_z_a: 'Title Z - A'
+    get_started: 'Get Started'
+    post: 'Post'
+    remember_me: 'Remember me'
+  
+  header:
+    logo: 'Bookstore'
+    shop: 'Shop'
+    account: "My account"
+    orders: "Orders"
+    settings: "Settings"
+    signup: "Sign up"
+    login: "Log in"
+    logout: "Log out"
+  
+  settings:
+    settings: 'Settings'
+    address: 'Address'
+    privacy: 'Privacy'
+    billing: 'Billing Address'
+    shipping: 'Shipping Address'
+    use_billing: 'Use Billing Adress'
+    save: 'Save'
+    e-mail: 'Email'
+    enter_e-mail: 'Enter Email'
+    enter_your_e-mail: 'Enter your email'
+    password: 'Password'
+    old_password: 'Old Password'
+    new_password: 'New Password'
+    confirm_password: 'Confirm Password'
+    remove_account: 'Remove Account'
+    please_remove_account: 'Please Remove My Account'
+    im_agree_lost_all_data: 'I understand that all data will be lost'
+    first_name: 'First Name'
+    last_name: 'Last Name'
+    city: 'City'
+    zip: 'Zip'
+    country: 'Country'
+    country_select: 'Select a country'
+    save: 'Save'
+    phone_placeholder: 'Example +1 541 754 3010'
+
+  page:
+    home:
+      carusel:
+        prev: 'Previous'
+        next: 'Next'
+      greeting: 'Welcome to our amazing Bookstore!'
+      text: 'We pore through hundreds of new books each month and select the five best we can find to share with our members.'
+      best_sellers: 'Best Sellers'
+
+    book:
+      show:
+        description: 'Description'
+        materials: 'Materials'
+        dimension: 'Dimensions'
+        published_at: 'Year of publication'
+        filter: 'Filter by category'
+
+      index:
+        by_category: 'Filter by category'
+        sort_by: 'Sort by'
+        catalog: 'Catalog'
+        
+  cart:
+    cart: 'Cart'
+    product: 'Product'
+    price: 'Price'
+    quantity: 'Quantity'
+    subtotal: 'SubTotal:'
+    checkout: 'Checkout'
+    coupon: 'Enter Your Coupon Code'
+    apply_coupon: 'Apply Coupon'
+    update: 'Update cart'
+    summary: 'Order Summary:'
+    coupon: 'Coupon:'
+    total: 'Order Total:'
+  
+  review:
+    reviews: 'Reviews'
+    verified: 'Verified Reviewer'
+    thanks_message: 'Thanks for Review. It will be published as soon as Admin will approve it.'
+    incorrect: 'Incorrect review format'
+    rating: 'Rating'
+    review: 'Review'
+    title: 'Title'
+  
+  checkout:
+    save_and_continue: 'Save and Continue'
+    fields_required: 'all fields are required'
+    item_total: 'Item Total:'
+    delivery: 'Delivery:'
+    returning_customer: 'Returning Customer'
+    or: 'or'
+    login_with_password: 'Log in with password'
+    enter_email: 'Enter Email'
+    new_customer: 'New Customer'
+    quick_register: 'Quick Register'
+    quick_description: "You'll be able to create password later"
+    continue: 'Continue to Checkout'
+    payment: 'Payment'
+    confirm: 'Confirm'
+    complete: 'Complete'
+    phone: 'Phone '
+    thanks: 'Thank You for your Order!'
+    sent_message: 'An order confirmation has been has been sent to '
+    order: 'Order '
+    book: 'Book'
+    total: 'Total'
+    shipments: 'Shipments'
+    place_order: 'Place Order'
+    edit: 'edit'
+
+  delivery:
+    delivery_method: 'Shipping Method'
+    method: 'Method'
+    days: 'Days'
+    price: 'Price'
+    pickup: 'Please, pick up Delivery type!'
+  
+  payment:
+    information: 'Payment Information'
+    credit_card: 'Credit Card'
+    card_number: 'Card Number'
+    name_on_card: 'Name on Card'
+    mm_yy: 'MM / YY'
+    cvv: 'CVV'
+    hint: '3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front'
+    number_hint: 'must contain from 13 to 18 digits'
+  
+  orders:
+    my_orders: 'My Orders'
+    sort_by: 'Sort by'
+    number: 'Number'
+    completed_at: 'Completed at'
+    status: 'Status'
+    total: 'Total'
+    in_queue: 'Waiting for processing'
+    in_delivery: 'In delivery'
+    delivered: 'Delivered'
+    canceled: 'Canceled'
+  
+  mail:
+    thanks: 'Thank You for your Order!'
+    welcome: 'Welcome to our Amazing Bookstore!'
+  
+  notice:
+    reg_message: 'You have successfully registered, your account information has been sent to '
+    empty_cart: 'Cart is empty!'
+    coupon_added: 'Coupon was successfully added'
+    coupon_invalid: 'Coupon is invalid!'
+    updated: 'Updated!'
+  
+  admin:
+    edit: 'Edit'
+    view: 'View'
+    delete: 'Delete'
+    sure?: 'Are you sure ?'
+    image: 'Image'
+    images: 'Images'
+    authors: 'Authors'
+    short_description: 'Short description'
+    dimension: 'Dimension'
+    change_status: 'Change the status'
+    current_status: 'Current status: '
+    order_details: 'Order details'
+    book: 'Book'
+    user: 'User'
+    show: 'Show'
+    actions: 'Actions'
+    approve: 'Approve'
+    reject: 'Reject'
+    unprocess: 'Unprocess'
+    approved: 'Approved'
+    rejected: 'Rejected'
+    unprocessed: 'Unprocessed'
+
+

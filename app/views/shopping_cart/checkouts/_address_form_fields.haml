@@ -1,0 +1,29 @@
+.form-group{class: "#{"has-error" if address_error?(field: :first_name, tag: tag)}"}
+  %label.control-label.font-weight-light{for: "firstName"}= t('settings.first_name')
+  = text_field_tag "#{tag}[first_name]", "#{address_saved_value(field: :first_name, tag: tag)}", placeholder: t('settings.first_name'), id: "firstName", class: "form-control"
+  %span.help-block= address_error_message(field: :first_name, tag: tag)
+.form-group{class: "#{"has-error" if address_error?(field: :last_name, tag: tag)}"}
+  %label.control-label.font-weight-light{for: "lastName"}= t('settings.last_name')
+  = text_field_tag "#{tag}[last_name]", "#{address_saved_value(field: :last_name, tag: tag)}", placeholder: t('settings.last_name'), id: "lastName", class: "form-control"
+  %span.help-block= address_error_message(field: :last_name, tag: tag)
+.form-group{class: "#{"has-error" if address_error?(field: :address, tag: tag)}"}
+  %label.control-label.font-weight-light{for: "address"}= t('settings.address')
+  = text_field_tag "#{tag}[address]", "#{address_saved_value(field: :address, tag: tag)}", placeholder: t('settings.address'), id: "address", class: "form-control"
+  %span.help-block= address_error_message(field: :address, tag: tag)
+.form-group{class: "#{"has-error" if address_error?(field: :city, tag: tag)}"}
+  %label.control-label.font-weight-light{for: "city"}= t('settings.city')
+  = text_field_tag "#{tag}[city]", "#{address_saved_value(field: :city, tag: tag)}", id: "city", placeholder: t('settings.city'), class: "form-control"
+  %span.help-block= address_error_message(field: :city, tag: tag)
+.form-group{class: "#{"has-error" if address_error?(field: :zip, tag: tag)}"}
+  %label.control-label.font-weight-light{for: "zip"}= t('settings.zip')
+  = text_field_tag "#{tag}[zip]", "#{address_saved_value(field: :zip, tag: tag)}", id: "zip", placeholder: t('settings.zip'), class: "form-control"
+  %span.help-block= address_error_message(field: :zip, tag: tag)
+.form-group{class: "#{"has-error" if address_error?(field: :country, tag: tag)}"}
+  %label.control-label.font-weight-light{for: "сountry"}= t('settings.country')
+  = select_tag "#{tag}[country]", options_from_collection_for_select(ISO3166::Country.countries.sort_by(&:name), 'un_locode', 'name', ['UA']), class: "form-control"
+  %span.help-block= address_error_message(field: :country, tag: tag)
+.form-group{class: "#{"has-error" if address_error?(field: :phone, tag: tag)}"}
+  %label.control-label.font-weight-light{for: "phone"}= t('settings.phone')
+  = text_field_tag "#{tag}[phone]", "#{address_saved_value(field: :phone, tag: tag)}", placeholder: t('settings.phone_placeholder'), id: "phone", class: "form-control"
+  %span.help-block= address_error_message(field: :phone, tag: tag)
+= hidden_field_tag "#{tag}[order_id]", current_order.id

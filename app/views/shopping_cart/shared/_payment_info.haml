@@ -1,0 +1,8 @@
+.col-sm-3
+  %h3.general-subtitle= t('payment.information')
+  %p.general-address
+  = secret_card_number(order.credit_card.number)
+  - if order.in_progress?
+    = link_to t('checkout.edit'), wizard_path(:payment, edit: true), class: "general-edit"
+  %br
+  = order.credit_card.expiration_date

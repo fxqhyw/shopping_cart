@@ -1,0 +1,25 @@
+%h1.general-title-margin= t('cart.checkout')
+%ul.steps.list-inline
+  %li.step.clickable-step{ class: active_step(:address) }
+    = link_to wizard_path(:address, edit: true), id: 'edit_address_link' do
+      %span.step-number 1
+    %span.step-text.hidden-xs= t('settings.address')
+  %li.step-divider
+  %li.step.clickable-step{ class: active_step(:delivery) }
+    = link_to wizard_path(:delivery, edit: true) do
+      %span.step-number 2
+    %span.step-text.hidden-xs= t('checkout.delivery')
+  %li.step-divider
+  %li.step.clickable-step{ class: active_step(:payment) }
+    = link_to wizard_path(:payment, edit: true) do
+      %span.step-number 3
+    %span.step-text.hidden-xs= t('checkout.payment')
+  %li.step-divider
+  %li.step.clickable-step{ class: active_step(:confirm) }
+    = link_to wizard_path(:confirm, edit: true) do
+      %span.step-number 4
+    %span.step-text.hidden-xs= t('checkout.confirm')
+  %li.step-divider
+  %li.step.clickable-step{ class: active_step(:complete) }
+    %span.step-number 5
+    %span.step-text.hidden-xs= t('checkout.complete')

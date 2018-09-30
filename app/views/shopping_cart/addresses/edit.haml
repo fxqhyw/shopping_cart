@@ -1,0 +1,9 @@
+%main.container
+  %h1.general-title-margin= t('settings.settings')
+  %ul.nav.clearfix.mb-20{role: "tablist"}
+    %li.tab-item{role: "presentation"}
+      = link_to t('settings.address'), address_path, class: 'tab-link text-as-link'
+    %li.tab-item{role: "presentation"}
+      = link_to t('settings.privacy'), main_app.privacy_path, class: 'tab-link'
+  .tab-content
+    = render 'address_tab'
