@@ -1,5 +1,5 @@
 module ShoppingCart
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ApplicationController
     include ShoppingCart::CurrentSession
     helper_method :current_order
   end
