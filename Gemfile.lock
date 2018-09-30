@@ -12,6 +12,7 @@ PATH
       jquery-turbolinks
       rails (~> 5.2.1)
       rectify
+      sass-rails
       turbolinks (~> 5)
       wicked
 
