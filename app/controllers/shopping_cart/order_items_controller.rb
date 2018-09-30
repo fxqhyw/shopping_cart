@@ -1,7 +1,7 @@
+require_dependency "shopping_cart/application_controller"
+
 module ShoppingCart
   class OrderItemsController < ApplicationController
-    include ShoppingCart::CurrentSession
-
     before_action :order_item, only: %i[update destroy]
 
     def create

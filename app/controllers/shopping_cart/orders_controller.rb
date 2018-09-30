@@ -1,7 +1,7 @@
+require_dependency "shopping_cart/application_controller"
+
 module ShoppingCart
   class OrdersController < ApplicationController
-    include ShoppingCart::CurrentSession
-
     before_action :authenticate_user!
     load_and_authorize_resource
 
